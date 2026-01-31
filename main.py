@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
+from langchain_ollama import ChatOllama
 
 load_dotenv()
 
@@ -26,11 +27,21 @@ def main():
         input_variables=["information"], template=summary_template
     )
 
-    llm = ChatOpenAI(
+    # llm = ChatOpenAI(
+    #     temperature=0,
+    #     model="gemma3:4b",
+    #     base_url="https://api.deepseek.com",
+    #     # api_key=api_key
+    # )
+
+    # usually, the above line of code would work, but we deployed our ollama server on a different host
+    # llm = ChatOllama(temperature=0, model="gemma3:4b")
+
+    # so, we need to specify the base_url
+    llm = ChatOllama(
         temperature=0,
-        model="deepseek-chat",
-        base_url="https://api.deepseek.com",
-        # api_key=api_key
+        model="gemma3:4b",
+        base_url="http://192.168.31.131:11434"
     )
 
     # LCEL: langchain expression language (pipe)
@@ -45,3 +56,15 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+# Ollama's response: (gemma3:4b) are as follows:
+# To be honest, the answer is almost bullshit.
+#
+# Okay, here’s a short summary and two interesting facts about Elon Musk, based on the information provided:
+# **1. Short Summary:**
+# Elon Musk is a hugely influential and wealthy American entrepreneur. He’s best known for founding PayPal, SpaceX, Tesla, and acquiring Twitter (now X). He’s also had a brief stint as a government advisor under Donald Trump. As of 2025, he holds the title of world’s richest person with a net worth of $393 billion.
+# **2. Two Interesting Facts:**
+# *   **DOGE Involvement:** Despite his current focus on X, Musk was briefly involved in promoting and leading the "Department of Government Efficiency" (DOGE) during Donald Trump’s administration – a project centered around the cryptocurrency Dogecoin.
+# *   **Early Space Obsession:** Musk’s fascination with space travel began in childhood, and he famously built and sold his first rockets as a teenager.
