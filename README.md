@@ -54,7 +54,7 @@ chmod u+x .venv/bin/activate
 source .venv/bin/activate
 ```
 
-Your terminal prompt should now show `(langchain-udemy)` prefix.
+Your terminal prompt should now show `(.venv)` prefix indicating the virtual environment is active.
 
 ## ⚙️ Configuration
 
@@ -72,7 +72,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 If using local LLMs with Ollama:
 
 1. Install Ollama from [ollama.ai](https://ollama.ai)
-2. Pull a model: `ollama pull gemma3:4b`
+2. Pull a model: `ollama pull gemma2:4b`
 3. For remote Ollama server, update the `base_url` in `main.py`
 
 ## 💻 Usage
