@@ -27,22 +27,22 @@ def main():
         input_variables=["information"], template=summary_template
     )
 
-    # llm = ChatOpenAI(
-    #     temperature=0,
-    #     model="gemma3:4b",
-    #     base_url="https://api.deepseek.com",
-    #     # api_key=api_key
-    # )
+    llm = ChatOpenAI(
+        temperature=0,
+        model="deepseek-chat",
+        base_url="https://api.deepseek.com",
+        # api_key=api_key
+    )
 
     # usually, the above line of code would work, but we deployed our ollama server on a different host
     # llm = ChatOllama(temperature=0, model="gemma3:4b")
 
     # so, we need to specify the base_url
-    llm = ChatOllama(
-        temperature=0,
-        model="gemma3:4b",
-        base_url="http://192.168.31.131:11434"
-    )
+    # llm = ChatOllama(
+    #     temperature=0,
+    #     model="gemma3:4b",
+    #     base_url="http://192.168.31.131:11434"
+    # )
 
     # LCEL: langchain expression language (pipe)
     # returns a RUNNABLE chain, which can be invoked
