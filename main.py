@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 from langchain_openai import ChatOpenAI
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_ollama import ChatOllama
 
 load_dotenv()
